@@ -1,0 +1,17 @@
+<RCC>
+    <qresource prefix="/">
+        <file>img/punto1.jpg</file>
+        <file>img/punto.gif</file>
+        <file>img/punto-nloop.gif</file>
+        <file>img/fiat-logo.jpg</file>
+        <file>clock-face.png</file>
+        <file>digital-7.ttf</file>
+        <file>fancy-ring.png</file>
+        <file>img/stain.jpg</file>
+        <file>img/icons/auto.ico</file>
+        <file>img/icons/bluetooth.ico</file>
+        <file>img/icons/player.ico</file>
+        <file>img/icons/settings.ico</file>
+        <file>img/auto.png</file>
+    </qresource>
+</RCC>
