@@ -19,10 +19,11 @@
 #include <QPointer>
 #include "settings.h"
 #include "timechanger.h"
+#include "messagebox.h"
 
 #define rds_pip QString("rds_ctl")
 
-#define FM_prog QString("sudo arecord -fS16_LE -r 44100 -Dplughw:1,0 -c 2 -  | sudo ./pi_fm_adv --audio -")
+#define FM_prog QString("arecord")
 
 
 
@@ -55,6 +56,8 @@ signals:
 
     void emit_gps(const QGeoPositionInfo &info);
 
+    void emit_gps_error(QGeoPositionInfoSource::Error e);
+
 public slots:
 
    // void set_default_settings();
@@ -75,6 +78,8 @@ public slots:
 
     void look_gps(const QGeoPositionInfo &info);
 
+    void gps_error(QGeoPositionInfoSource::Error e);
+
 
 protected:
     void keyPressEvent(QKeyEvent *);
@@ -88,11 +93,16 @@ protected:
     void start_fm();
 
 
+    void initializeSettings();
+
+
 
 private:
     Ui::MainWindow *ui;
     QProcess *fmrpi;
     QLocalSocket *s_rds;
     QGeoPositionInfoSource *gps_info;
+    QGeoPositionInfoSource::Error gps_state;
+    MessageBox *msg;
 };
 #endif // MAINWINDOW_H

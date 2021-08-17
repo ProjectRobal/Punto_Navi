@@ -73,6 +73,7 @@ SOURCES += \
     ./gps_data.cpp \
     ./qserialgeoinfosource.cpp \
     gpsshowtime.cpp \
+    messagebox.cpp \
     timechanger.cpp
 
 
@@ -101,6 +102,7 @@ HEADERS += \
     ./gps_data.h \
     ./qserialgeoinfosource.h \
     gpsshowtime.h \
+    messagebox.h \
     timechanger.h
 
 
@@ -109,6 +111,7 @@ FORMS += \
     gpsshowtime.ui \
     mainwindow.ui \
     menu.ui \
+    messagebox.ui \
     settings.ui \
     timechanger.ui
 

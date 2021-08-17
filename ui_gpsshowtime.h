@@ -37,7 +37,22 @@ public:
         if (GPSShowTime->objectName().isEmpty())
             GPSShowTime->setObjectName(QString::fromUtf8("GPSShowTime"));
         GPSShowTime->resize(800, 600);
-        GPSShowTime->setStyleSheet(QString::fromUtf8("color:white;"));
+        GPSShowTime->setAutoFillBackground(true);
+        GPSShowTime->setStyleSheet(QString::fromUtf8("QLabel\n"
+"{\n"
+"\n"
+"background:black;\n"
+"border: 2px solid white;\n"
+"color: white;\n"
+"\n"
+"}\n"
+"\n"
+"QPushButton\n"
+"{\n"
+"background:black;\n"
+"border: 2px solid white;\n"
+"color: white;\n"
+"}"));
         gridLayout = new QGridLayout(GPSShowTime);
         gridLayout->setObjectName(QString::fromUtf8("gridLayout"));
         verticalSpacer = new QSpacerItem(20, 200, QSizePolicy::Minimum, QSizePolicy::Fixed);
@@ -46,9 +61,7 @@ public:
 
         back = new QPushButton(GPSShowTime);
         back->setObjectName(QString::fromUtf8("back"));
-        back->setStyleSheet(QString::fromUtf8("border: 1px solid white;\n"
-"border-radius:10%;\n"
-"background-color:rgb(46, 52, 54);"));
+        back->setStyleSheet(QString::fromUtf8(""));
 
         gridLayout->addWidget(back, 6, 0, 1, 1);
 

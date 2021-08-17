@@ -21,8 +21,8 @@ QT_BEGIN_MOC_NAMESPACE
 QT_WARNING_PUSH
 QT_WARNING_DISABLE_DEPRECATED
 struct qt_meta_stringdata_GPSShowTime_t {
-    QByteArrayData data[7];
-    char stringdata0[73];
+    QByteArrayData data[10];
+    char stringdata0[115];
 };
 #define QT_MOC_LITERAL(idx, ofs, len) \
     Q_STATIC_BYTE_ARRAY_DATA_HEADER_INITIALIZER_WITH_OFFSET(len, \
@@ -37,11 +37,16 @@ QT_MOC_LITERAL(2, 28, 0), // ""
 QT_MOC_LITERAL(3, 29, 9), // "show_info"
 QT_MOC_LITERAL(4, 39, 11), // "retrive_gps"
 QT_MOC_LITERAL(5, 51, 16), // "QGeoPositionInfo"
-QT_MOC_LITERAL(6, 68, 4) // "info"
+QT_MOC_LITERAL(6, 68, 4), // "info"
+QT_MOC_LITERAL(7, 73, 9), // "get_error"
+QT_MOC_LITERAL(8, 83, 29), // "QGeoPositionInfoSource::Error"
+QT_MOC_LITERAL(9, 113, 1) // "e"
 
     },
     "GPSShowTime\0on_back_clicked\0\0show_info\0"
-    "retrive_gps\0QGeoPositionInfo\0info"
+    "retrive_gps\0QGeoPositionInfo\0info\0"
+    "get_error\0QGeoPositionInfoSource::Error\0"
+    "e"
 };
 #undef QT_MOC_LITERAL
 
@@ -51,7 +56,7 @@ static const uint qt_meta_data_GPSShowTime[] = {
        8,       // revision
        0,       // classname
        0,    0, // classinfo
-       3,   14, // methods
+       4,   14, // methods
        0,    0, // properties
        0,    0, // enums/sets
        0,    0, // constructors
@@ -59,14 +64,16 @@ static const uint qt_meta_data_GPSShowTime[] = {
        0,       // signalCount
 
  // slots: name, argc, parameters, tag, flags
-       1,    0,   29,    2, 0x08 /* Private */,
-       3,    0,   30,    2, 0x08 /* Private */,
-       4,    1,   31,    2, 0x08 /* Private */,
+       1,    0,   34,    2, 0x08 /* Private */,
+       3,    0,   35,    2, 0x08 /* Private */,
+       4,    1,   36,    2, 0x08 /* Private */,
+       7,    1,   39,    2, 0x08 /* Private */,
 
  // slots: parameters
     QMetaType::Void,
     QMetaType::Void,
     QMetaType::Void, 0x80000000 | 5,    6,
+    QMetaType::Void, 0x80000000 | 8,    9,
 
        0        // eod
 };
@@ -80,6 +87,7 @@ void GPSShowTime::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _id,
         case 0: _t->on_back_clicked(); break;
         case 1: _t->show_info(); break;
         case 2: _t->retrive_gps((*reinterpret_cast< const QGeoPositionInfo(*)>(_a[1]))); break;
+        case 3: _t->get_error((*reinterpret_cast< QGeoPositionInfoSource::Error(*)>(_a[1]))); break;
         default: ;
         }
     } else if (_c == QMetaObject::RegisterMethodArgumentMetaType) {
@@ -125,13 +133,13 @@ int GPSShowTime::qt_metacall(QMetaObject::Call _c, int _id, void **_a)
     if (_id < 0)
         return _id;
     if (_c == QMetaObject::InvokeMetaMethod) {
-        if (_id < 3)
+        if (_id < 4)
             qt_static_metacall(this, _c, _id, _a);
-        _id -= 3;
+        _id -= 4;
     } else if (_c == QMetaObject::RegisterMethodArgumentMetaType) {
-        if (_id < 3)
+        if (_id < 4)
             qt_static_metacall(this, _c, _id, _a);
-        _id -= 3;
+        _id -= 4;
     }
     return _id;
 }

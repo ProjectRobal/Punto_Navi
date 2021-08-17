@@ -76,6 +76,7 @@ SOURCES       = aa_headunit.cpp \
 		gps_data.cpp \
 		qserialgeoinfosource.cpp \
 		gpsshowtime.cpp \
+		messagebox.cpp \
 		timechanger.cpp qrc_resources.cpp \
 		moc_aa_headunit.cpp \
 		moc_androidauto.cpp \
@@ -91,6 +92,7 @@ SOURCES       = aa_headunit.cpp \
 		moc_gps_data.cpp \
 		moc_qserialgeoinfosource.cpp \
 		moc_gpsshowtime.cpp \
+		moc_messagebox.cpp \
 		moc_timechanger.cpp
 OBJECTS       = aa_headunit.o \
 		androidauto.o \
@@ -116,6 +118,7 @@ OBJECTS       = aa_headunit.o \
 		gps_data.o \
 		qserialgeoinfosource.o \
 		gpsshowtime.o \
+		messagebox.o \
 		timechanger.o \
 		qrc_resources.o \
 		moc_aa_headunit.o \
@@ -132,6 +135,7 @@ OBJECTS       = aa_headunit.o \
 		moc_gps_data.o \
 		moc_qserialgeoinfosource.o \
 		moc_gpsshowtime.o \
+		moc_messagebox.o \
 		moc_timechanger.o
 DIST          = ../raspi/sysroot/include/QtProtobufProtobuf/QtCore.proto \
 		../raspi/sysroot/include/QtProtobufProtobuf/QtGui.proto \
@@ -249,6 +253,7 @@ DIST          = ../raspi/sysroot/include/QtProtobufProtobuf/QtCore.proto \
 		gps_data.h \
 		qserialgeoinfosource.h \
 		gpsshowtime.h \
+		messagebox.h \
 		timechanger.h aa_headunit.cpp \
 		androidauto.cpp \
 		headunit.cpp \
@@ -273,6 +278,7 @@ DIST          = ../raspi/sysroot/include/QtProtobufProtobuf/QtCore.proto \
 		gps_data.cpp \
 		qserialgeoinfosource.cpp \
 		gpsshowtime.cpp \
+		messagebox.cpp \
 		timechanger.cpp
 QMAKE_TARGET  = Punto_Navi
 DESTDIR       = 
@@ -283,7 +289,7 @@ TARGETD       = Punto_Navi
 first: all
 ####### Build rules
 
-Punto_Navi: ui_aa_headunit.h ui_gpsshowtime.h ui_mainwindow.h ui_menu.h ui_settings.h ui_timechanger.h $(OBJECTS)  
+Punto_Navi: ui_aa_headunit.h ui_gpsshowtime.h ui_mainwindow.h ui_menu.h ui_messagebox.h ui_settings.h ui_timechanger.h $(OBJECTS)  
 	$(LINK) $(LFLAGS) -o $(TARGET) $(OBJECTS) $(OBJCOMP) $(LIBS)
 
 Makefile: Punto_Navi.pro /usr/lib/x86_64-linux-gnu/qt5/mkspecs/linux-g++/qmake.conf /usr/lib/x86_64-linux-gnu/qt5/mkspecs/features/spec_pre.prf \
@@ -483,9 +489,9 @@ distdir: FORCE
 	$(COPY_FILE) --parents $(DIST) $(DISTDIR)/
 	$(COPY_FILE) --parents resources.qrc $(DISTDIR)/
 	$(COPY_FILE) --parents /usr/lib/x86_64-linux-gnu/qt5/mkspecs/features/data/dummy.cpp $(DISTDIR)/
-	$(COPY_FILE) --parents SetManager.h aa_headunit.h androidauto.h headunit.h headunit/hu/hu_aad.h headunit/hu/hu_aap.h headunit/hu/hu_ssl.h headunit/hu/hu_tcp.h headunit/hu/hu_usb.h headunit/hu/hu_uti.h headunit/hu/generated.x64/hu.pb.h headunit/common/glib_utils.h custombutton.h hollowcircle.h intro.h mainwindow.h menu.h menuentry.h oclock.h settings.h switch.h gps_data.h qserialgeoinfosource.h gpsshowtime.h timechanger.h $(DISTDIR)/
-	$(COPY_FILE) --parents aa_headunit.cpp androidauto.cpp headunit.cpp headunit/hu/hu_aad.cpp headunit/hu/hu_aap.cpp headunit/hu/hu_ssl.cpp headunit/hu/hu_tcp.cpp headunit/hu/hu_usb.cpp headunit/hu/hu_uti.cpp headunit/common/glib_utils.cpp headunit/hu/generated.x64/hu.pb.cc custombutton.cpp hollowcircle.cpp intro.cpp main.cpp mainwindow.cpp menu.cpp menuentry.cpp oclock.cpp settings.cpp switch.cpp gps_data.cpp qserialgeoinfosource.cpp gpsshowtime.cpp timechanger.cpp $(DISTDIR)/
-	$(COPY_FILE) --parents aa_headunit.ui gpsshowtime.ui mainwindow.ui menu.ui settings.ui timechanger.ui $(DISTDIR)/
+	$(COPY_FILE) --parents SetManager.h aa_headunit.h androidauto.h headunit.h headunit/hu/hu_aad.h headunit/hu/hu_aap.h headunit/hu/hu_ssl.h headunit/hu/hu_tcp.h headunit/hu/hu_usb.h headunit/hu/hu_uti.h headunit/hu/generated.x64/hu.pb.h headunit/common/glib_utils.h custombutton.h hollowcircle.h intro.h mainwindow.h menu.h menuentry.h oclock.h settings.h switch.h gps_data.h qserialgeoinfosource.h gpsshowtime.h messagebox.h timechanger.h $(DISTDIR)/
+	$(COPY_FILE) --parents aa_headunit.cpp androidauto.cpp headunit.cpp headunit/hu/hu_aad.cpp headunit/hu/hu_aap.cpp headunit/hu/hu_ssl.cpp headunit/hu/hu_tcp.cpp headunit/hu/hu_usb.cpp headunit/hu/hu_uti.cpp headunit/common/glib_utils.cpp headunit/hu/generated.x64/hu.pb.cc custombutton.cpp hollowcircle.cpp intro.cpp main.cpp mainwindow.cpp menu.cpp menuentry.cpp oclock.cpp settings.cpp switch.cpp gps_data.cpp qserialgeoinfosource.cpp gpsshowtime.cpp messagebox.cpp timechanger.cpp $(DISTDIR)/
+	$(COPY_FILE) --parents aa_headunit.ui gpsshowtime.ui mainwindow.ui menu.ui messagebox.ui settings.ui timechanger.ui $(DISTDIR)/
 
 
 clean: compiler_clean 
@@ -520,6 +526,7 @@ qrc_resources.cpp: resources.qrc \
 		img/punto-nloop.gif \
 		img/stain.jpg \
 		img/auto.png \
+		img/warrn.png \
 		img/fiat-logo.jpg \
 		img/punto.gif \
 		img/punto1.jpg \
@@ -535,9 +542,9 @@ compiler_moc_predefs_clean:
 moc_predefs.h: /usr/lib/x86_64-linux-gnu/qt5/mkspecs/features/data/dummy.cpp
 	g++ -pipe -O2 -std=gnu++1y -pthread -pthread -pthread -pthread -Wall -W -dM -E -o moc_predefs.h /usr/lib/x86_64-linux-gnu/qt5/mkspecs/features/data/dummy.cpp
 
-compiler_moc_header_make_all: moc_aa_headunit.cpp moc_androidauto.cpp moc_headunit.cpp moc_custombutton.cpp moc_intro.cpp moc_mainwindow.cpp moc_menu.cpp moc_menuentry.cpp moc_oclock.cpp moc_settings.cpp moc_switch.cpp moc_gps_data.cpp moc_qserialgeoinfosource.cpp moc_gpsshowtime.cpp moc_timechanger.cpp
+compiler_moc_header_make_all: moc_aa_headunit.cpp moc_androidauto.cpp moc_headunit.cpp moc_custombutton.cpp moc_intro.cpp moc_mainwindow.cpp moc_menu.cpp moc_menuentry.cpp moc_oclock.cpp moc_settings.cpp moc_switch.cpp moc_gps_data.cpp moc_qserialgeoinfosource.cpp moc_gpsshowtime.cpp moc_messagebox.cpp moc_timechanger.cpp
 compiler_moc_header_clean:
-	-$(DEL_FILE) moc_aa_headunit.cpp moc_androidauto.cpp moc_headunit.cpp moc_custombutton.cpp moc_intro.cpp moc_mainwindow.cpp moc_menu.cpp moc_menuentry.cpp moc_oclock.cpp moc_settings.cpp moc_switch.cpp moc_gps_data.cpp moc_qserialgeoinfosource.cpp moc_gpsshowtime.cpp moc_timechanger.cpp
+	-$(DEL_FILE) moc_aa_headunit.cpp moc_androidauto.cpp moc_headunit.cpp moc_custombutton.cpp moc_intro.cpp moc_mainwindow.cpp moc_menu.cpp moc_menuentry.cpp moc_oclock.cpp moc_settings.cpp moc_switch.cpp moc_gps_data.cpp moc_qserialgeoinfosource.cpp moc_gpsshowtime.cpp moc_messagebox.cpp moc_timechanger.cpp
 moc_aa_headunit.cpp: aa_headunit.h \
 		menuentry.h \
 		androidauto.h \
@@ -588,6 +595,7 @@ moc_mainwindow.cpp: mainwindow.h \
 		settings.h \
 		SetManager.h \
 		timechanger.h \
+		messagebox.h \
 		moc_predefs.h \
 		/usr/lib/qt5/bin/moc
 	/usr/lib/qt5/bin/moc $(DEFINES) --include /home/windows/Punto_Navi/Punto_Navi/moc_predefs.h -I/usr/lib/x86_64-linux-gnu/qt5/mkspecs/linux-g++ -I/home/windows/Punto_Navi/Punto_Navi -I/home/windows/Punto_Navi/Punto_Navi/headunit/hu -I/home/windows/Punto_Navi/Punto_Navi/headunit/hu/generated.x64 -I/home/windows/Punto_Navi/Punto_Navi/headunit/common -I/home/windows/raspi/sysroot/usr/local/include/libusb-1.0 -I/usr/include/libusb-1.0 -I/usr/include/glib-2.0 -I/usr/lib/x86_64-linux-gnu/glib-2.0/include -I/usr/include/gstreamer-1.0 -I/usr/include/orc-0.4 -I/usr/include/x86_64-linux-gnu/qt5 -I/usr/include/x86_64-linux-gnu/qt5/QtMultimediaWidgets -I/usr/include/x86_64-linux-gnu/qt5/QtWidgets -I/usr/include/x86_64-linux-gnu/qt5/QtX11Extras -I/usr/include/x86_64-linux-gnu/qt5/QtMultimedia -I/usr/include/x86_64-linux-gnu/qt5/QtGui -I/usr/include/x86_64-linux-gnu/qt5/QtBluetooth -I/usr/include/x86_64-linux-gnu/qt5/QtNetwork -I/usr/include/x86_64-linux-gnu/qt5/QtSerialPort -I/usr/include/x86_64-linux-gnu/qt5/QtPositioning -I/usr/include/x86_64-linux-gnu/qt5/QtCore -I/usr/include/c++/9 -I/usr/include/x86_64-linux-gnu/c++/9 -I/usr/include/c++/9/backward -I/usr/lib/gcc/x86_64-linux-gnu/9/include -I/usr/local/include -I/usr/include/x86_64-linux-gnu -I/usr/include mainwindow.h -o moc_mainwindow.cpp
@@ -641,6 +649,11 @@ moc_gpsshowtime.cpp: gpsshowtime.h \
 		/usr/lib/qt5/bin/moc
 	/usr/lib/qt5/bin/moc $(DEFINES) --include /home/windows/Punto_Navi/Punto_Navi/moc_predefs.h -I/usr/lib/x86_64-linux-gnu/qt5/mkspecs/linux-g++ -I/home/windows/Punto_Navi/Punto_Navi -I/home/windows/Punto_Navi/Punto_Navi/headunit/hu -I/home/windows/Punto_Navi/Punto_Navi/headunit/hu/generated.x64 -I/home/windows/Punto_Navi/Punto_Navi/headunit/common -I/home/windows/raspi/sysroot/usr/local/include/libusb-1.0 -I/usr/include/libusb-1.0 -I/usr/include/glib-2.0 -I/usr/lib/x86_64-linux-gnu/glib-2.0/include -I/usr/include/gstreamer-1.0 -I/usr/include/orc-0.4 -I/usr/include/x86_64-linux-gnu/qt5 -I/usr/include/x86_64-linux-gnu/qt5/QtMultimediaWidgets -I/usr/include/x86_64-linux-gnu/qt5/QtWidgets -I/usr/include/x86_64-linux-gnu/qt5/QtX11Extras -I/usr/include/x86_64-linux-gnu/qt5/QtMultimedia -I/usr/include/x86_64-linux-gnu/qt5/QtGui -I/usr/include/x86_64-linux-gnu/qt5/QtBluetooth -I/usr/include/x86_64-linux-gnu/qt5/QtNetwork -I/usr/include/x86_64-linux-gnu/qt5/QtSerialPort -I/usr/include/x86_64-linux-gnu/qt5/QtPositioning -I/usr/include/x86_64-linux-gnu/qt5/QtCore -I/usr/include/c++/9 -I/usr/include/x86_64-linux-gnu/c++/9 -I/usr/include/c++/9/backward -I/usr/lib/gcc/x86_64-linux-gnu/9/include -I/usr/local/include -I/usr/include/x86_64-linux-gnu -I/usr/include gpsshowtime.h -o moc_gpsshowtime.cpp
 
+moc_messagebox.cpp: messagebox.h \
+		moc_predefs.h \
+		/usr/lib/qt5/bin/moc
+	/usr/lib/qt5/bin/moc $(DEFINES) --include /home/windows/Punto_Navi/Punto_Navi/moc_predefs.h -I/usr/lib/x86_64-linux-gnu/qt5/mkspecs/linux-g++ -I/home/windows/Punto_Navi/Punto_Navi -I/home/windows/Punto_Navi/Punto_Navi/headunit/hu -I/home/windows/Punto_Navi/Punto_Navi/headunit/hu/generated.x64 -I/home/windows/Punto_Navi/Punto_Navi/headunit/common -I/home/windows/raspi/sysroot/usr/local/include/libusb-1.0 -I/usr/include/libusb-1.0 -I/usr/include/glib-2.0 -I/usr/lib/x86_64-linux-gnu/glib-2.0/include -I/usr/include/gstreamer-1.0 -I/usr/include/orc-0.4 -I/usr/include/x86_64-linux-gnu/qt5 -I/usr/include/x86_64-linux-gnu/qt5/QtMultimediaWidgets -I/usr/include/x86_64-linux-gnu/qt5/QtWidgets -I/usr/include/x86_64-linux-gnu/qt5/QtX11Extras -I/usr/include/x86_64-linux-gnu/qt5/QtMultimedia -I/usr/include/x86_64-linux-gnu/qt5/QtGui -I/usr/include/x86_64-linux-gnu/qt5/QtBluetooth -I/usr/include/x86_64-linux-gnu/qt5/QtNetwork -I/usr/include/x86_64-linux-gnu/qt5/QtSerialPort -I/usr/include/x86_64-linux-gnu/qt5/QtPositioning -I/usr/include/x86_64-linux-gnu/qt5/QtCore -I/usr/include/c++/9 -I/usr/include/x86_64-linux-gnu/c++/9 -I/usr/include/c++/9/backward -I/usr/lib/gcc/x86_64-linux-gnu/9/include -I/usr/local/include -I/usr/include/x86_64-linux-gnu -I/usr/include messagebox.h -o moc_messagebox.cpp
+
 moc_timechanger.cpp: timechanger.h \
 		menuentry.h \
 		moc_predefs.h \
@@ -651,9 +664,9 @@ compiler_moc_objc_header_make_all:
 compiler_moc_objc_header_clean:
 compiler_moc_source_make_all:
 compiler_moc_source_clean:
-compiler_uic_make_all: ui_aa_headunit.h ui_gpsshowtime.h ui_mainwindow.h ui_menu.h ui_settings.h ui_timechanger.h
+compiler_uic_make_all: ui_aa_headunit.h ui_gpsshowtime.h ui_mainwindow.h ui_menu.h ui_messagebox.h ui_settings.h ui_timechanger.h
 compiler_uic_clean:
-	-$(DEL_FILE) ui_aa_headunit.h ui_gpsshowtime.h ui_mainwindow.h ui_menu.h ui_settings.h ui_timechanger.h
+	-$(DEL_FILE) ui_aa_headunit.h ui_gpsshowtime.h ui_mainwindow.h ui_menu.h ui_messagebox.h ui_settings.h ui_timechanger.h
 ui_aa_headunit.h: aa_headunit.ui \
 		/usr/lib/qt5/bin/uic \
 		androidauto.h \
@@ -678,6 +691,10 @@ ui_menu.h: menu.ui \
 		oclock.h \
 		hollowcircle.h
 	/usr/lib/qt5/bin/uic menu.ui -o ui_menu.h
+
+ui_messagebox.h: messagebox.ui \
+		/usr/lib/qt5/bin/uic
+	/usr/lib/qt5/bin/uic messagebox.ui -o ui_messagebox.h
 
 ui_settings.h: settings.ui \
 		/usr/lib/qt5/bin/uic
@@ -785,7 +802,8 @@ main.o: main.cpp mainwindow.h \
 		menuentry.h \
 		settings.h \
 		SetManager.h \
-		timechanger.h
+		timechanger.h \
+		messagebox.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o main.o main.cpp
 
 mainwindow.o: mainwindow.cpp menu.h \
@@ -806,6 +824,7 @@ mainwindow.o: mainwindow.cpp menu.h \
 		settings.h \
 		SetManager.h \
 		timechanger.h \
+		messagebox.h \
 		ui_mainwindow.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o mainwindow.o mainwindow.cpp
 
@@ -818,7 +837,8 @@ menuentry.o: menuentry.cpp menuentry.h \
 		mainwindow.h \
 		settings.h \
 		SetManager.h \
-		timechanger.h
+		timechanger.h \
+		messagebox.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o menuentry.o menuentry.cpp
 
 oclock.o: oclock.cpp oclock.h \
@@ -830,7 +850,8 @@ settings.o: settings.cpp settings.h \
 		SetManager.h \
 		ui_settings.h \
 		mainwindow.h \
-		timechanger.h
+		timechanger.h \
+		messagebox.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o settings.o settings.cpp
 
 switch.o: switch.cpp switch.h \
@@ -852,8 +873,13 @@ gpsshowtime.o: gpsshowtime.cpp gpsshowtime.h \
 		mainwindow.h \
 		settings.h \
 		SetManager.h \
-		timechanger.h
+		timechanger.h \
+		messagebox.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o gpsshowtime.o gpsshowtime.cpp
+
+messagebox.o: messagebox.cpp messagebox.h \
+		ui_messagebox.h
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o messagebox.o messagebox.cpp
 
 timechanger.o: timechanger.cpp timechanger.h \
 		menuentry.h \
@@ -904,6 +930,9 @@ moc_qserialgeoinfosource.o: moc_qserialgeoinfosource.cpp
 
 moc_gpsshowtime.o: moc_gpsshowtime.cpp 
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o moc_gpsshowtime.o moc_gpsshowtime.cpp
+
+moc_messagebox.o: moc_messagebox.cpp 
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o moc_messagebox.o moc_messagebox.cpp
 
 moc_timechanger.o: moc_timechanger.cpp 
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o moc_timechanger.o moc_timechanger.cpp

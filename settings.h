@@ -40,6 +40,8 @@ private slots:
 
     void on_fm_on_stateChanged(int arg1);
 
+    void on_gps_clicked();
+
 private:
     Ui::Settings *ui;
 

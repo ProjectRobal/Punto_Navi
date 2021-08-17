@@ -32,6 +32,8 @@ private slots:
 
     void retrive_gps(const QGeoPositionInfo& info) override;
 
+    void get_error(QGeoPositionInfoSource::Error e);
+
 
 private:
     Ui::GPSShowTime *ui;

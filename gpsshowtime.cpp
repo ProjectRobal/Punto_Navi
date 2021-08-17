@@ -39,7 +39,7 @@ GPSShowTime::~GPSShowTime()
 
 void GPSShowTime::on_back_clicked()
 {
-    emit back_to(1);
+    emit back_to(3);
 }
 
 void GPSShowTime::show_info()
@@ -59,9 +59,15 @@ void GPSShowTime::connect(MainWindow *win)
 {
     QObject::connect(this,&MenuEntry::back_to,win,&MainWindow::go_to_scene);
     QObject::connect(win,&MainWindow::emit_gps,this,&MenuEntry::retrive_gps);
+    QObject::connect(win,&MainWindow::emit_gps_error,this,&GPSShowTime::get_error);
 }
 
 void GPSShowTime::retrive_gps(const QGeoPositionInfo& info)
 {
     gps=info;
+}
+
+void GPSShowTime::get_error(QGeoPositionInfoSource::Error e)
+{
+
 }

@@ -109,7 +109,7 @@ void Settings::connect(MainWindow *win)
 
        QObject::connect(this,&MenuEntry::reset_fm,win,&MainWindow::turn_fm);
 
-       QObject::connect(this,&MenuEntry::reset_rds,win,&MainWindow::turn_rds);
+     //  QObject::connect(this,&MenuEntry::reset_rds,win,&MainWindow::turn_rds);
 
        QObject::connect(this,&MenuEntry::rds_msg,win,&MainWindow::rds_msg);
 
@@ -214,4 +214,9 @@ void Settings::on_fm_on_stateChanged(int arg1)
     settings["fm/run"]=check_to_bool((Qt::CheckState)arg1);
 
     this->update();
+}
+
+void Settings::on_gps_clicked()
+{
+    emit back_to(4);
 }

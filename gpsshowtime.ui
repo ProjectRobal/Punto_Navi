@@ -13,8 +13,25 @@
   <property name="windowTitle">
    <string>Form</string>
   </property>
+  <property name="autoFillBackground">
+   <bool>true</bool>
+  </property>
   <property name="styleSheet">
-   <string notr="true">color:white;</string>
+   <string notr="true">QLabel
+{
+
+background:black;
+border: 2px solid white;
+color: white;
+
+}
+
+QPushButton
+{
+background:black;
+border: 2px solid white;
+color: white;
+}</string>
   </property>
   <layout class="QGridLayout" name="gridLayout">
    <item row="5" column="0">
@@ -36,9 +53,8 @@
    <item row="6" column="0">
     <widget class="QPushButton" name="back">
      <property name="styleSheet">
-      <string notr="true">border: 1px solid white;
-border-radius:10%;
-background-color:rgb(46, 52, 54);</string>
+      <string notr="true">
+</string>
      </property>
      <property name="text">
       <string>Back</string>

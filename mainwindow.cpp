@@ -55,6 +55,8 @@ if(gps_info)
 
 QObject::connect(gps_info,SIGNAL(positionUpdated(QGeoPositionInfo)),this,SLOT(look_gps(QGeoPositionInfo)));
 
+QObject::connect(gps_info,SIGNAL(error(QGeoPositionInfo)),this,SLOT(gps_error(QGeoPositionInfo)));
+
 gps_info->startUpdates();
 
 }
@@ -65,10 +67,13 @@ else
 //QObject::connect(s_rds,&QLocalSocket::errorOccurred,this,&MainWindow::rds_error);
 
 
-start_fm();
+initializeSettings();
 
-turn_rds();
+msg=new MessageBox(this);
 
+msg->setGeometry(0,0,this->size().width()/2,this->size().height()/2);
+
+msg->show();
 
 }
 
@@ -78,6 +83,13 @@ void MainWindow::look_gps(const QGeoPositionInfo& info)
 
 emit emit_gps(info);
 
+}
+
+void MainWindow::gps_error(QGeoPositionInfoSource::Error e)
+{
+    qDebug()<<e;
+
+    emit emit_gps_error(e);
 }
 
 
@@ -182,14 +194,6 @@ void MainWindow::allocate_widget(int w)
 
     }
 
-   // QObject::connect(n_widget,&MenuEntry::back_to,this,&MainWindow::go_to_scene);
-
-    //QObject::connect(n_widget,&MenuEntry::reset_fm,this,&MainWindow::turn_fm);
-
-    //QObject::connect(n_widget,&MenuEntry::reset_rds,this,&MainWindow::turn_rds);
-
-    //QObject::connect(n_widget,&MenuEntry::rds_msg,this,&MainWindow::rds_msg);
-
     n_widget->connect(this);
 
 }
@@ -224,28 +228,8 @@ void MainWindow::turn_rds()
 
 void MainWindow::turn_fm()
 {
-    get_settings
 
-
-
-    if(_settings.value("fm/run").toBool())
-    {
-
-
-        fmrpi->start();
-
-         qDebug()<<fmrpi->readAllStandardOutput();
-         qDebug()<<fmrpi->readAllStandardError();
-
-    }
-    else
-    {
-
-        fmrpi->close();
-
-    }
-
-
+    start_fm();
 }
 
 void MainWindow::fm_error(QProcess::ProcessError error)
@@ -358,27 +342,34 @@ void MainWindow::rds_error(QLocalSocket::LocalSocketError socketError)
 void MainWindow::start_fm()
 {
 
-    QString f_prog=FM_prog;
-
-    //QString arg;
+    fmrpi->kill();
 
     get_settings
 
-    f_prog+="--ctl "+rds_pip;
-
-    f_prog+="--freq "+_settings.value("fm/freq").toString();
-
     QStringList args;
 
-    args<<"-fS16_LE"<<"-r"<<"44100"<<"-Dplughw:1,0"<<"-c"<<"2"<<"-"<<"|"<<"./pi_fm_adv"<<"--aduio"<<"-";
 
 
-    fmrpi->start(QString("arecord"),args);
+    if(_settings.value("fm/rds").toBool())
+    {
+        args<<"--ctl"<<rds_pip;
+    }
+
+    args<<"--freq"<<_settings.value("fm/freq").toString()<<"-fS16_LE"<<"-r"<<"44100"<<"-Dplughw:1,0"<<"-c"<<"2"<<"-"<<"|"<<"./utils/pi_fm_adv"<<"--aduio"<<"-";
+
+    fmrpi->start(FM_prog,args);
 
 
+}
 
-    turn_rds();
-    turn_fm();
+void MainWindow::initializeSettings()
+{
+    get_settings
+
+    if(_settings.value("fm/run").toBool())
+    {
+        start_fm();
+    }
 
 }
 
