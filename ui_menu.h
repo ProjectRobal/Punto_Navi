@@ -11,7 +11,9 @@
 
 #include <QtCore/QVariant>
 #include <QtWidgets/QApplication>
+#include <QtWidgets/QGridLayout>
 #include <QtWidgets/QPushButton>
+#include <QtWidgets/QSpacerItem>
 #include <QtWidgets/QWidget>
 #include <oclock.h>
 
@@ -20,12 +22,16 @@ QT_BEGIN_NAMESPACE
 class Ui_Menu
 {
 public:
+    QGridLayout *gridLayout;
     QPushButton *player;
     OClock *widget;
-    QPushButton *android;
-    QPushButton *settings;
     QPushButton *bluetooth;
     QPushButton *navi;
+    QSpacerItem *verticalSpacer;
+    QSpacerItem *verticalSpacer_2;
+    QPushButton *android;
+    QSpacerItem *verticalSpacer_3;
+    QPushButton *settings;
 
     void setupUi(QWidget *Menu)
     {
@@ -43,11 +49,15 @@ public:
         Menu->setAutoFillBackground(false);
         Menu->setStyleSheet(QString::fromUtf8(""));
         Menu->setProperty("sizeGripEnabled", QVariant(true));
+        gridLayout = new QGridLayout(Menu);
+        gridLayout->setObjectName(QString::fromUtf8("gridLayout"));
         player = new QPushButton(Menu);
         player->setObjectName(QString::fromUtf8("player"));
-        player->setGeometry(QRect(350, 370, 100, 100));
-        sizePolicy.setHeightForWidth(player->sizePolicy().hasHeightForWidth());
-        player->setSizePolicy(sizePolicy);
+        QSizePolicy sizePolicy1(QSizePolicy::Maximum, QSizePolicy::Maximum);
+        sizePolicy1.setHorizontalStretch(0);
+        sizePolicy1.setVerticalStretch(0);
+        sizePolicy1.setHeightForWidth(player->sizePolicy().hasHeightForWidth());
+        player->setSizePolicy(sizePolicy1);
         player->setAutoFillBackground(false);
         player->setStyleSheet(QString::fromUtf8("background-color: rgb(136, 138, 133);\n"
 "border-radius:50%;\n"
@@ -55,16 +65,59 @@ public:
 "padding:20px;\n"
 ""));
         player->setIconSize(QSize(48, 48));
+
+        gridLayout->addWidget(player, 0, 3, 1, 1);
+
         widget = new OClock(Menu);
         widget->setObjectName(QString::fromUtf8("widget"));
-        widget->setGeometry(QRect(240, 10, 300, 300));
+        QSizePolicy sizePolicy2(QSizePolicy::Expanding, QSizePolicy::Expanding);
+        sizePolicy2.setHorizontalStretch(0);
+        sizePolicy2.setVerticalStretch(0);
+        sizePolicy2.setHeightForWidth(widget->sizePolicy().hasHeightForWidth());
+        widget->setSizePolicy(sizePolicy2);
         widget->setStyleSheet(QString::fromUtf8(""));
+
+        gridLayout->addWidget(widget, 2, 2, 1, 3);
+
+        bluetooth = new QPushButton(Menu);
+        bluetooth->setObjectName(QString::fromUtf8("bluetooth"));
+        sizePolicy1.setHeightForWidth(bluetooth->sizePolicy().hasHeightForWidth());
+        bluetooth->setSizePolicy(sizePolicy1);
+        bluetooth->setStyleSheet(QString::fromUtf8("background-color: rgb(211, 215, 207);\n"
+"border-radius:50%;\n"
+"border-style:solid;\n"
+"padding:20px;\n"
+""));
+        bluetooth->setIconSize(QSize(48, 48));
+
+        gridLayout->addWidget(bluetooth, 0, 4, 1, 1);
+
+        navi = new QPushButton(Menu);
+        navi->setObjectName(QString::fromUtf8("navi"));
+        sizePolicy1.setHeightForWidth(navi->sizePolicy().hasHeightForWidth());
+        navi->setSizePolicy(sizePolicy1);
+        navi->setStyleSheet(QString::fromUtf8("background-color: rgb(114, 159, 207);\n"
+"border-radius:50%;\n"
+"border-style:solid;\n"
+"padding:20px;\n"
+""));
+        navi->setIconSize(QSize(48, 48));
+
+        gridLayout->addWidget(navi, 0, 2, 1, 1);
+
+        verticalSpacer = new QSpacerItem(20, 40, QSizePolicy::Minimum, QSizePolicy::Minimum);
+
+        gridLayout->addItem(verticalSpacer, 1, 3, 1, 1);
+
+        verticalSpacer_2 = new QSpacerItem(20, 40, QSizePolicy::Minimum, QSizePolicy::Minimum);
+
+        gridLayout->addItem(verticalSpacer_2, 0, 0, 1, 1);
+
         android = new QPushButton(Menu);
         android->setObjectName(QString::fromUtf8("android"));
         android->setEnabled(true);
-        android->setGeometry(QRect(40, 300, 100, 100));
-        sizePolicy.setHeightForWidth(android->sizePolicy().hasHeightForWidth());
-        android->setSizePolicy(sizePolicy);
+        sizePolicy1.setHeightForWidth(android->sizePolicy().hasHeightForWidth());
+        android->setSizePolicy(sizePolicy1);
         android->setMinimumSize(QSize(40, 40));
         android->setSizeIncrement(QSize(0, 0));
         android->setStyleSheet(QString::fromUtf8("background-color: rgb(0, 170, 0);\n"
@@ -74,39 +127,26 @@ public:
 ""));
         android->setIconSize(QSize(48, 48));
         android->setFlat(false);
+
+        gridLayout->addWidget(android, 1, 0, 1, 1);
+
+        verticalSpacer_3 = new QSpacerItem(20, 40, QSizePolicy::Minimum, QSizePolicy::Minimum);
+
+        gridLayout->addItem(verticalSpacer_3, 0, 5, 1, 1);
+
         settings = new QPushButton(Menu);
         settings->setObjectName(QString::fromUtf8("settings"));
-        settings->setGeometry(QRect(670, 300, 100, 100));
-        sizePolicy.setHeightForWidth(settings->sizePolicy().hasHeightForWidth());
-        settings->setSizePolicy(sizePolicy);
+        sizePolicy1.setHeightForWidth(settings->sizePolicy().hasHeightForWidth());
+        settings->setSizePolicy(sizePolicy1);
         settings->setStyleSheet(QString::fromUtf8("background-color: rgb(136, 138, 133);\n"
 "border-radius:50%;\n"
 "border-style:solid;\n"
 "padding:20px;\n"
 ""));
         settings->setIconSize(QSize(48, 48));
-        bluetooth = new QPushButton(Menu);
-        bluetooth->setObjectName(QString::fromUtf8("bluetooth"));
-        bluetooth->setGeometry(QRect(520, 340, 100, 100));
-        sizePolicy.setHeightForWidth(bluetooth->sizePolicy().hasHeightForWidth());
-        bluetooth->setSizePolicy(sizePolicy);
-        bluetooth->setStyleSheet(QString::fromUtf8("background-color: rgb(211, 215, 207);\n"
-"border-radius:50%;\n"
-"border-style:solid;\n"
-"padding:20px;\n"
-""));
-        bluetooth->setIconSize(QSize(48, 48));
-        navi = new QPushButton(Menu);
-        navi->setObjectName(QString::fromUtf8("navi"));
-        navi->setGeometry(QRect(190, 340, 100, 100));
-        sizePolicy.setHeightForWidth(navi->sizePolicy().hasHeightForWidth());
-        navi->setSizePolicy(sizePolicy);
-        navi->setStyleSheet(QString::fromUtf8("background-color: rgb(114, 159, 207);\n"
-"border-radius:50%;\n"
-"border-style:solid;\n"
-"padding:20px;\n"
-""));
-        navi->setIconSize(QSize(48, 48));
+
+        gridLayout->addWidget(settings, 1, 5, 1, 1);
+
 
         retranslateUi(Menu);
 
@@ -120,10 +160,10 @@ public:
     {
         Menu->setWindowTitle(QApplication::translate("Menu", "Menu", nullptr));
         player->setText(QString());
-        android->setText(QString());
-        settings->setText(QString());
         bluetooth->setText(QString());
         navi->setText(QApplication::translate("Menu", "Navi", nullptr));
+        android->setText(QString());
+        settings->setText(QString());
     } // retranslateUi
 
 };

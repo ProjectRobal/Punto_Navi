@@ -52,6 +52,18 @@ bool check_to_bool(Qt::CheckState state)
 
 }
 
+int freq_to_position(float freq)
+{
+
+    return (((freq-MIN_FREQ)/(MAX_FREQ-MIN_FREQ))*100.f)-1;
+
+}
+
+float position_to_freq(int pos)
+{
+    return (((pos+1)/100.f)*(MAX_FREQ-MIN_FREQ))+MIN_FREQ;
+}
+
 
 Settings::Settings(QWidget *parent) :
     MenuEntry(parent),
@@ -115,11 +127,13 @@ void Settings::update()
 
     QSettings _settings(Set_File,QSettings::IniFormat);
 
-    //ui->freq->setText((QString::number(settings["fm/freq"].toFloat(),'g',4))+=" Mhz");
+    ui->freq->setText((QString::number(settings["fm/freq"].toFloat(),'g',4))+=" Mhz");
 
-    //ui->fm_on->setCheckState(bool_to_check(_settings.value("fm/run").toBool()));
+    ui->f_slide->setSliderPosition(freq_to_position(settings["fm/freq"].toFloat()));
 
-    //ui->rds_on->setCheckState(bool_to_check(_settings.value("fm/rds").toBool()));
+    ui->fm_on->setCheckState(bool_to_check(settings.value("fm/run").toBool()));
+
+    ui->rds->setCheckState(bool_to_check(settings.value("fm/rds").toBool()));
 
 
 }
@@ -168,4 +182,36 @@ void Settings::on_Save_clicked()
    emit reset_fm();
    emit reset_rds();
 
+}
+
+void Settings::on_FM_clicked()
+{
+    ui->menu->setCurrentIndex(1);
+}
+
+void Settings::on_back_menu_clicked()
+{
+    ui->menu->setCurrentIndex(0);
+}
+
+
+void Settings::on_f_slide_valueChanged(int value)
+{
+    settings["fm/freq"]=position_to_freq(value);
+
+    this->update();
+}
+
+void Settings::on_rds_stateChanged(int arg1)
+{
+    settings["fm/rds"]=check_to_bool((Qt::CheckState)arg1);
+
+    this->update();
+}
+
+void Settings::on_fm_on_stateChanged(int arg1)
+{
+    settings["fm/run"]=check_to_bool((Qt::CheckState)arg1);
+
+    this->update();
 }

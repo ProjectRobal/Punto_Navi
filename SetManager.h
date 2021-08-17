@@ -3,6 +3,9 @@
 
 #endif // SETMANAGER_H
 
+#define MAX_FREQ 108.f
+#define MIN_FREQ 76.f
+
 #define Set_File "./punto_navi.ini"
 
 

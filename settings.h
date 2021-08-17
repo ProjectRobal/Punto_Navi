@@ -1,6 +1,8 @@
 #ifndef SETTINGS_H
 #define SETTINGS_H
 
+
+
 #include <QWidget>
 #include <QDateTime>
 #include <QTimer>
@@ -27,6 +29,16 @@ private slots:
     void on_Reset_clicked();
 
     void on_Save_clicked();
+
+    void on_FM_clicked();
+
+    void on_back_menu_clicked();
+
+    void on_f_slide_valueChanged(int value);
+
+    void on_rds_stateChanged(int arg1);
+
+    void on_fm_on_stateChanged(int arg1);
 
 private:
     Ui::Settings *ui;
