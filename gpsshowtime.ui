@@ -53,8 +53,7 @@ color: white;
    <item row="6" column="0">
     <widget class="QPushButton" name="back">
      <property name="styleSheet">
-      <string notr="true">
-</string>
+      <string notr="true"/>
      </property>
      <property name="text">
       <string>Back</string>

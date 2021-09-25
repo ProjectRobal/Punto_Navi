@@ -7,7 +7,7 @@ AA_Headunit::AA_Headunit(QWidget *parent) :
 {
     ui->setupUi(this);
 
-
+    QObject::connect(ui->server,&AndroidAuto::return_to_menu,this,&AA_Headunit::on_pushButton_clicked);
 }
 
 void AA_Headunit::showEvent(QShowEvent *event)
@@ -34,5 +34,12 @@ void AA_Headunit::on_pushButton_clicked()
     ui->server->stopAA();
 
     emit back_to(1);
+}
+
+void AA_Headunit::connection_failure()
+{
+    emit show_msg("To many failed attempt to connect");
+
+    this->on_pushButton_clicked();
 }
 

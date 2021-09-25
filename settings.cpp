@@ -71,8 +71,9 @@ Settings::Settings(QWidget *parent) :
 {
     ui->setupUi(this);
 
+    //this->setStyleSheet("*{ background-color:white;} QPushButton{ background-color:gray; color:brown; border-radius: 50%;}");
 
-
+    QScroller::grabGesture(ui->scrollArea, QScroller::LeftMouseButtonGesture);
     //time_modification=false;
 
     sec_to_up=0;

@@ -7,6 +7,12 @@ MessageBox::MessageBox(QWidget *parent) :
 {
     ui->setupUi(this);
 
+    this->setStyleSheet("* {background-color:white;}");
+
+    ui->back->setStyleSheet("#back{background-color:black;}");
+
+    //ui->ok->setStyleSheet("background-color:");
+
     this->hide();
 }
 
@@ -32,8 +38,7 @@ void MessageBox::show_msg(QString message)
 }
 
 
-
-void MessageBox::on_buttonBox_clicked(QAbstractButton *button)
+void MessageBox::on_ok_clicked(QAbstractButton *button)
 {
-this->hide();
+    this->hide();
 }

@@ -25,7 +25,8 @@ public slots:
     void show_msg(QString message);
 
 private slots:
-    void on_buttonBox_clicked(QAbstractButton *button);
+
+    void on_ok_clicked(QAbstractButton *button);
 
 private:
     Ui::MessageBox *ui;

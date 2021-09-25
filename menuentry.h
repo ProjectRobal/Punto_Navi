@@ -26,6 +26,8 @@ signals:
 
     void rds_msg(QString msg);
 
+    void show_msg(QString msg);
+
 
 
 public slots:

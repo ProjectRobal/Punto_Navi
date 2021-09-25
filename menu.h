@@ -39,6 +39,8 @@ private slots:
 
 
 
+    void on_player_clicked();
+
 private:
     Ui::Menu *ui;
 };

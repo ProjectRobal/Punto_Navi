@@ -42,6 +42,8 @@ class MainWindow : public QMainWindow
 {
     Q_OBJECT
 
+    friend MenuEntry;
+
 public:
     //Intro *intro;
     QRect *screen_size;
@@ -58,9 +60,13 @@ signals:
 
     void emit_gps_error(QGeoPositionInfoSource::Error e);
 
+    //void show_msg(QString msg);
+
 public slots:
 
    // void set_default_settings();
+
+    void show_msg(QString _msg);
 
     void go_to_scene(int i);
 
@@ -95,7 +101,7 @@ protected:
 
     void initializeSettings();
 
-
+    MessageBox *msg;
 
 private:
     Ui::MainWindow *ui;
@@ -103,6 +109,6 @@ private:
     QLocalSocket *s_rds;
     QGeoPositionInfoSource *gps_info;
     QGeoPositionInfoSource::Error gps_state;
-    MessageBox *msg;
+
 };
 #endif // MAINWINDOW_H

@@ -1,0 +1,47 @@
+QMainWindow{
+
+background: url(\":/img/back1.jpg\"),rgba(0,0,0);
+}
+
+QPushButton {
+
+background:white;
+color:red;
+border:6px ridge green;
+border-radius:10px;
+}
+
+QStackedWidget {
+background:url(\":/img/back1.jpg\");
+opacity:127;
+border:5px double black;
+border-radius:4px;
+
+}
+
+QLabel {
+background:white;
+color:green;
+border:6px groove red;
+border-radius:10px;
+}
+
+QCheckBox
+{
+background:brown;
+color:white;
+border:6px groove black;
+}
+
+QSlider
+{
+    background:yellow;
+    border-top:20px outset green;
+    border-bottom:20px outset green;
+}
+
+QSlider::sub-page::horizontal
+{
+    background:blue;
+    border:5px solid blue;
+}

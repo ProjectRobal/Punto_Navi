@@ -23,12 +23,12 @@ Menu::~Menu()
 
 void Menu::paintEvent(QPaintEvent *e)
 {
-   Q_UNUSED(e);
+   //Q_UNUSED(e);
 
-    QPainter paint(this);
+  //  QPainter paint(this);
 
 
-    paint.drawPixmap(0,0,back);
+//    paint.drawPixmap(0,0,back);
 
 }
 
@@ -44,4 +44,9 @@ void Menu::on_android_clicked()
 void Menu::on_settings_clicked()
 {
     emit back_to(3);
+}
+
+void Menu::on_player_clicked()
+{
+    emit back_to(5);
 }

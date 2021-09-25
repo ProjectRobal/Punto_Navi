@@ -13,6 +13,7 @@
 #include <QtWidgets/QApplication>
 #include <QtWidgets/QCheckBox>
 #include <QtWidgets/QGridLayout>
+#include <QtWidgets/QHBoxLayout>
 #include <QtWidgets/QLabel>
 #include <QtWidgets/QPushButton>
 #include <QtWidgets/QScrollArea>
@@ -27,21 +28,20 @@ class Ui_Settings
 {
 public:
     QGridLayout *gridLayout_2;
+    QPushButton *Exit;
     QPushButton *Reset;
     QPushButton *back_menu;
-    QPushButton *Exit;
-    QPushButton *Save;
     QStackedWidget *menu;
     QWidget *start;
     QGridLayout *gridLayout;
     QScrollArea *scrollArea;
     QWidget *scrollAreaWidgetContents;
-    QGridLayout *gridLayout_3;
-    QPushButton *connect;
+    QHBoxLayout *horizontalLayout;
     QPushButton *time;
-    QPushButton *gps;
     QPushButton *other;
+    QPushButton *gps;
     QPushButton *audio;
+    QPushButton *connect;
     QPushButton *FM;
     QWidget *fm;
     QGridLayout *gridLayout_5;
@@ -52,6 +52,7 @@ public:
     QLabel *freq;
     QLabel *label;
     QCheckBox *fm_on;
+    QPushButton *Save;
 
     void setupUi(QWidget *Settings)
     {
@@ -59,116 +60,34 @@ public:
             Settings->setObjectName(QString::fromUtf8("Settings"));
         Settings->resize(875, 479);
         Settings->setAutoFillBackground(false);
-        Settings->setStyleSheet(QString::fromUtf8("#Settings\n"
-"{\n"
-"background-color:rgb(0, 0, 0);\n"
-"color:white;\n"
-"}\n"
-"\n"
-"QScrollArea\n"
-"{\n"
-"border: 1px solid white;\n"
-"background-color:rgb(0, 0, 0);\n"
-"color:white;\n"
-"}\n"
-"\n"
-"\n"
-"QPushButton , QCheckBox\n"
-"{\n"
-"border: 2px solid white;\n"
-"background-color:qlineargradient(spread:reflect, x1:1, y1:0.318, x2:1, y2:1, stop:0 rgba(0, 0, 0, 255), stop:1 rgba(255, 255, 255, 255));\n"
-"color:white;\n"
-"\n"
-"}\n"
-"\n"
-"QLabel\n"
-"{\n"
-"color:white;\n"
-"}\n"
-"\n"
-"QRadioButton\n"
-"{\n"
-"background:black;\n"
-"border: 2px solid white;\n"
-"color:white;\n"
-"}\n"
-"\n"
-"QRadioButton::indicator::unchecked\n"
-"{\n"
-"background:black;\n"
-"border:1px solid white;\n"
-"}\n"
-"\n"
-"QRadioButton::indicator::checked\n"
-"{\n"
-"background:white;\n"
-"border:1px solid white;\n"
-"}\n"
-"\n"
-"QCheckBox\n"
-"{\n"
-"background:black;\n"
-"border: 2px solid white;\n"
-"color:white;\n"
-"}\n"
-"\n"
-"QCheckBox::indicator::unchecked\n"
-"{\n"
-"background:black;\n"
-"border:1px solid white;\n"
-"}\n"
-"\n"
-"QCheckBox::indicator::chec"
-                        "ked\n"
-"{\n"
-"background:white;\n"
-"border:1px solid white;\n"
-"}\n"
-"\n"
-"QSlider::groove\n"
-"{\n"
-"	background:black;\n"
-"	border:2px solid white;\n"
-"	border-radius:4px;\n"
-"}\n"
-"\n"
-"QSlider::handle:horizontal\n"
-"{\n"
-"	background:rgb(68, 68, 68);\n"
-"	border:1px solid white;\n"
-"	width:15px;\n"
-"	height:15px;\n"
-"}\n"
-"\n"
-"QSlider::sub-page:horizontal\n"
-"{\n"
-"	background:white;\n"
-"	border:1px solid white;\n"
-"}"));
+        Settings->setStyleSheet(QString::fromUtf8(""));
         gridLayout_2 = new QGridLayout(Settings);
         gridLayout_2->setObjectName(QString::fromUtf8("gridLayout_2"));
+        Exit = new QPushButton(Settings);
+        Exit->setObjectName(QString::fromUtf8("Exit"));
+        QSizePolicy sizePolicy(QSizePolicy::Minimum, QSizePolicy::Expanding);
+        sizePolicy.setHorizontalStretch(0);
+        sizePolicy.setVerticalStretch(0);
+        sizePolicy.setHeightForWidth(Exit->sizePolicy().hasHeightForWidth());
+        Exit->setSizePolicy(sizePolicy);
+        Exit->setStyleSheet(QString::fromUtf8(""));
+
+        gridLayout_2->addWidget(Exit, 3, 2, 1, 1);
+
         Reset = new QPushButton(Settings);
         Reset->setObjectName(QString::fromUtf8("Reset"));
+        sizePolicy.setHeightForWidth(Reset->sizePolicy().hasHeightForWidth());
+        Reset->setSizePolicy(sizePolicy);
         Reset->setStyleSheet(QString::fromUtf8(""));
 
         gridLayout_2->addWidget(Reset, 3, 1, 1, 1);
 
         back_menu = new QPushButton(Settings);
         back_menu->setObjectName(QString::fromUtf8("back_menu"));
+        sizePolicy.setHeightForWidth(back_menu->sizePolicy().hasHeightForWidth());
+        back_menu->setSizePolicy(sizePolicy);
 
         gridLayout_2->addWidget(back_menu, 3, 3, 1, 1);
-
-        Exit = new QPushButton(Settings);
-        Exit->setObjectName(QString::fromUtf8("Exit"));
-        Exit->setStyleSheet(QString::fromUtf8(""));
-
-        gridLayout_2->addWidget(Exit, 3, 2, 1, 1);
-
-        Save = new QPushButton(Settings);
-        Save->setObjectName(QString::fromUtf8("Save"));
-        Save->setStyleSheet(QString::fromUtf8(""));
-
-        gridLayout_2->addWidget(Save, 3, 0, 1, 1);
 
         menu = new QStackedWidget(Settings);
         menu->setObjectName(QString::fromUtf8("menu"));
@@ -178,63 +97,83 @@ public:
         gridLayout->setObjectName(QString::fromUtf8("gridLayout"));
         scrollArea = new QScrollArea(start);
         scrollArea->setObjectName(QString::fromUtf8("scrollArea"));
-        scrollArea->setWidgetResizable(true);
+        scrollArea->setFrameShape(QFrame::StyledPanel);
+        scrollArea->setFrameShadow(QFrame::Raised);
+        scrollArea->setLineWidth(1);
+        scrollArea->setVerticalScrollBarPolicy(Qt::ScrollBarAlwaysOff);
+        scrollArea->setHorizontalScrollBarPolicy(Qt::ScrollBarAlwaysOff);
+        scrollArea->setSizeAdjustPolicy(QAbstractScrollArea::AdjustIgnored);
+        scrollArea->setWidgetResizable(false);
+        scrollArea->setAlignment(Qt::AlignJustify|Qt::AlignVCenter);
         scrollAreaWidgetContents = new QWidget();
         scrollAreaWidgetContents->setObjectName(QString::fromUtf8("scrollAreaWidgetContents"));
-        scrollAreaWidgetContents->setGeometry(QRect(0, 0, 823, 511));
-        gridLayout_3 = new QGridLayout(scrollAreaWidgetContents);
-        gridLayout_3->setSpacing(50);
-        gridLayout_3->setObjectName(QString::fromUtf8("gridLayout_3"));
-        gridLayout_3->setContentsMargins(50, 100, 50, 200);
-        connect = new QPushButton(scrollAreaWidgetContents);
-        connect->setObjectName(QString::fromUtf8("connect"));
-        QSizePolicy sizePolicy(QSizePolicy::Maximum, QSizePolicy::Fixed);
-        sizePolicy.setHorizontalStretch(0);
-        sizePolicy.setVerticalStretch(0);
-        sizePolicy.setHeightForWidth(connect->sizePolicy().hasHeightForWidth());
-        connect->setSizePolicy(sizePolicy);
-        QFont font;
-        font.setPointSize(20);
-        connect->setFont(font);
-
-        gridLayout_3->addWidget(connect, 0, 2, 1, 1);
-
+        scrollAreaWidgetContents->setGeometry(QRect(0, 4, 3000, 350));
+        QSizePolicy sizePolicy1(QSizePolicy::Minimum, QSizePolicy::Minimum);
+        sizePolicy1.setHorizontalStretch(0);
+        sizePolicy1.setVerticalStretch(0);
+        sizePolicy1.setHeightForWidth(scrollAreaWidgetContents->sizePolicy().hasHeightForWidth());
+        scrollAreaWidgetContents->setSizePolicy(sizePolicy1);
+        horizontalLayout = new QHBoxLayout(scrollAreaWidgetContents);
+        horizontalLayout->setSpacing(10);
+        horizontalLayout->setObjectName(QString::fromUtf8("horizontalLayout"));
+        horizontalLayout->setSizeConstraint(QLayout::SetDefaultConstraint);
+        horizontalLayout->setContentsMargins(0, 0, 0, 0);
         time = new QPushButton(scrollAreaWidgetContents);
         time->setObjectName(QString::fromUtf8("time"));
+        QSizePolicy sizePolicy2(QSizePolicy::Expanding, QSizePolicy::Minimum);
+        sizePolicy2.setHorizontalStretch(0);
+        sizePolicy2.setVerticalStretch(0);
+        sizePolicy2.setHeightForWidth(time->sizePolicy().hasHeightForWidth());
+        time->setSizePolicy(sizePolicy2);
+        QFont font;
+        font.setPointSize(20);
         time->setFont(font);
 
-        gridLayout_3->addWidget(time, 2, 0, 1, 1);
-
-        gps = new QPushButton(scrollAreaWidgetContents);
-        gps->setObjectName(QString::fromUtf8("gps"));
-        sizePolicy.setHeightForWidth(gps->sizePolicy().hasHeightForWidth());
-        gps->setSizePolicy(sizePolicy);
-        gps->setFont(font);
-
-        gridLayout_3->addWidget(gps, 1, 2, 1, 1);
+        horizontalLayout->addWidget(time);
 
         other = new QPushButton(scrollAreaWidgetContents);
         other->setObjectName(QString::fromUtf8("other"));
+        sizePolicy2.setHeightForWidth(other->sizePolicy().hasHeightForWidth());
+        other->setSizePolicy(sizePolicy2);
         other->setFont(font);
 
-        gridLayout_3->addWidget(other, 2, 2, 1, 1);
+        horizontalLayout->addWidget(other);
+
+        gps = new QPushButton(scrollAreaWidgetContents);
+        gps->setObjectName(QString::fromUtf8("gps"));
+        sizePolicy2.setHeightForWidth(gps->sizePolicy().hasHeightForWidth());
+        gps->setSizePolicy(sizePolicy2);
+        gps->setFont(font);
+
+        horizontalLayout->addWidget(gps);
 
         audio = new QPushButton(scrollAreaWidgetContents);
         audio->setObjectName(QString::fromUtf8("audio"));
-        sizePolicy.setHeightForWidth(audio->sizePolicy().hasHeightForWidth());
-        audio->setSizePolicy(sizePolicy);
+        sizePolicy2.setHeightForWidth(audio->sizePolicy().hasHeightForWidth());
+        audio->setSizePolicy(sizePolicy2);
         audio->setFont(font);
         audio->setFlat(false);
 
-        gridLayout_3->addWidget(audio, 1, 0, 1, 1);
+        horizontalLayout->addWidget(audio);
+
+        connect = new QPushButton(scrollAreaWidgetContents);
+        connect->setObjectName(QString::fromUtf8("connect"));
+        sizePolicy2.setHeightForWidth(connect->sizePolicy().hasHeightForWidth());
+        connect->setSizePolicy(sizePolicy2);
+        connect->setFont(font);
+
+        horizontalLayout->addWidget(connect);
 
         FM = new QPushButton(scrollAreaWidgetContents);
         FM->setObjectName(QString::fromUtf8("FM"));
-        sizePolicy.setHeightForWidth(FM->sizePolicy().hasHeightForWidth());
-        FM->setSizePolicy(sizePolicy);
+        QSizePolicy sizePolicy3(QSizePolicy::Expanding, QSizePolicy::Expanding);
+        sizePolicy3.setHorizontalStretch(0);
+        sizePolicy3.setVerticalStretch(0);
+        sizePolicy3.setHeightForWidth(FM->sizePolicy().hasHeightForWidth());
+        FM->setSizePolicy(sizePolicy3);
         FM->setFont(font);
 
-        gridLayout_3->addWidget(FM, 0, 0, 1, 1);
+        horizontalLayout->addWidget(FM);
 
         scrollArea->setWidget(scrollAreaWidgetContents);
 
@@ -269,22 +208,22 @@ public:
 
         freq = new QLabel(fm);
         freq->setObjectName(QString::fromUtf8("freq"));
-        QSizePolicy sizePolicy1(QSizePolicy::Preferred, QSizePolicy::Maximum);
-        sizePolicy1.setHorizontalStretch(0);
-        sizePolicy1.setVerticalStretch(0);
-        sizePolicy1.setHeightForWidth(freq->sizePolicy().hasHeightForWidth());
-        freq->setSizePolicy(sizePolicy1);
+        QSizePolicy sizePolicy4(QSizePolicy::Preferred, QSizePolicy::Maximum);
+        sizePolicy4.setHorizontalStretch(0);
+        sizePolicy4.setVerticalStretch(0);
+        sizePolicy4.setHeightForWidth(freq->sizePolicy().hasHeightForWidth());
+        freq->setSizePolicy(sizePolicy4);
         freq->setFont(font);
 
         gridLayout_5->addWidget(freq, 0, 1, 1, 1);
 
         label = new QLabel(fm);
         label->setObjectName(QString::fromUtf8("label"));
-        QSizePolicy sizePolicy2(QSizePolicy::Maximum, QSizePolicy::Maximum);
-        sizePolicy2.setHorizontalStretch(0);
-        sizePolicy2.setVerticalStretch(0);
-        sizePolicy2.setHeightForWidth(label->sizePolicy().hasHeightForWidth());
-        label->setSizePolicy(sizePolicy2);
+        QSizePolicy sizePolicy5(QSizePolicy::Maximum, QSizePolicy::Maximum);
+        sizePolicy5.setHorizontalStretch(0);
+        sizePolicy5.setVerticalStretch(0);
+        sizePolicy5.setHeightForWidth(label->sizePolicy().hasHeightForWidth());
+        label->setSizePolicy(sizePolicy5);
         QFont font1;
         font1.setFamily(QString::fromUtf8("Nakula"));
         font1.setPointSize(20);
@@ -302,6 +241,14 @@ public:
 
         gridLayout_2->addWidget(menu, 0, 0, 1, 4);
 
+        Save = new QPushButton(Settings);
+        Save->setObjectName(QString::fromUtf8("Save"));
+        sizePolicy.setHeightForWidth(Save->sizePolicy().hasHeightForWidth());
+        Save->setSizePolicy(sizePolicy);
+        Save->setStyleSheet(QString::fromUtf8(""));
+
+        gridLayout_2->addWidget(Save, 3, 0, 1, 1);
+
 
         retranslateUi(Settings);
 
@@ -311,20 +258,20 @@ public:
     void retranslateUi(QWidget *Settings)
     {
         Settings->setWindowTitle(QApplication::translate("Settings", "Form", nullptr));
+        Exit->setText(QApplication::translate("Settings", "Exit settings", nullptr));
         Reset->setText(QApplication::translate("Settings", "Reset settings", nullptr));
         back_menu->setText(QApplication::translate("Settings", "Back", nullptr));
-        Exit->setText(QApplication::translate("Settings", "Exit settings", nullptr));
-        Save->setText(QApplication::translate("Settings", "Save settings", nullptr));
-        connect->setText(QApplication::translate("Settings", "Connectivity", nullptr));
         time->setText(QApplication::translate("Settings", "Time", nullptr));
-        gps->setText(QApplication::translate("Settings", "GPS", nullptr));
         other->setText(QApplication::translate("Settings", "Other", nullptr));
+        gps->setText(QApplication::translate("Settings", "GPS", nullptr));
         audio->setText(QApplication::translate("Settings", "Audio", nullptr));
+        connect->setText(QApplication::translate("Settings", "Connectivity", nullptr));
         FM->setText(QApplication::translate("Settings", "FM", nullptr));
         rds->setText(QApplication::translate("Settings", " Enable RDS", nullptr));
         freq->setText(QApplication::translate("Settings", "TextLabel", nullptr));
         label->setText(QApplication::translate("Settings", "Frequency:", nullptr));
         fm_on->setText(QApplication::translate("Settings", " Enable FM transmitter", nullptr));
+        Save->setText(QApplication::translate("Settings", "Save settings", nullptr));
     } // retranslateUi
 
 };

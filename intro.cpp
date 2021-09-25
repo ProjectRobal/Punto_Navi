@@ -10,6 +10,8 @@ Intro::Intro(QWidget *parent) : MenuEntry(parent)
 
     label=new QLabel(this);
 
+    label->setStyleSheet("border:none;");
+
     label->setScaledContents(true);
 
     start_animation=  new QMovie(":/img/punto-nloop.gif");

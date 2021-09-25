@@ -22,7 +22,7 @@ QT_WARNING_PUSH
 QT_WARNING_DISABLE_DEPRECATED
 struct qt_meta_stringdata_MessageBox_t {
     QByteArrayData data[7];
-    char stringdata0[74];
+    char stringdata0[67];
 };
 #define QT_MOC_LITERAL(idx, ofs, len) \
     Q_STATIC_BYTE_ARRAY_DATA_HEADER_INITIALIZER_WITH_OFFSET(len, \
@@ -35,14 +35,13 @@ QT_MOC_LITERAL(0, 0, 10), // "MessageBox"
 QT_MOC_LITERAL(1, 11, 8), // "show_msg"
 QT_MOC_LITERAL(2, 20, 0), // ""
 QT_MOC_LITERAL(3, 21, 7), // "message"
-QT_MOC_LITERAL(4, 29, 20), // "on_buttonBox_clicked"
-QT_MOC_LITERAL(5, 50, 16), // "QAbstractButton*"
-QT_MOC_LITERAL(6, 67, 6) // "button"
+QT_MOC_LITERAL(4, 29, 13), // "on_ok_clicked"
+QT_MOC_LITERAL(5, 43, 16), // "QAbstractButton*"
+QT_MOC_LITERAL(6, 60, 6) // "button"
 
     },
-    "MessageBox\0show_msg\0\0message\0"
-    "on_buttonBox_clicked\0QAbstractButton*\0"
-    "button"
+    "MessageBox\0show_msg\0\0message\0on_ok_clicked\0"
+    "QAbstractButton*\0button"
 };
 #undef QT_MOC_LITERAL
 
@@ -77,7 +76,7 @@ void MessageBox::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _id, 
         Q_UNUSED(_t)
         switch (_id) {
         case 0: _t->show_msg((*reinterpret_cast< QString(*)>(_a[1]))); break;
-        case 1: _t->on_buttonBox_clicked((*reinterpret_cast< QAbstractButton*(*)>(_a[1]))); break;
+        case 1: _t->on_ok_clicked((*reinterpret_cast< QAbstractButton*(*)>(_a[1]))); break;
         default: ;
         }
     } else if (_c == QMetaObject::RegisterMethodArgumentMetaType) {

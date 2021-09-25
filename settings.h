@@ -6,6 +6,7 @@
 #include <QWidget>
 #include <QDateTime>
 #include <QTimer>
+#include <QScroller>
 #include "menuentry.h"
 #include "SetManager.h"
 

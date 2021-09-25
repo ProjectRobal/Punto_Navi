@@ -47,7 +47,7 @@ AndroidAuto::AndroidAuto(QWidget *parent)
 
     QObject::connect(headunit,&Headunit::resetAA,this,&AndroidAuto::waitAA);
 
-    QObject::connect(headunit,&Headunit::failure,this,&AndroidAuto::close);
+    QObject::connect(headunit,&Headunit::failure,this,&AndroidAuto::failure);
 
 
 
@@ -309,4 +309,9 @@ l_c=0;
 s_message.truncate(s_message.length()-4);
 }
 
+}
+
+void AndroidAuto::failure()
+{
+    emit return_to_menu();
 }

@@ -32,9 +32,7 @@
       </sizepolicy>
      </property>
      <property name="styleSheet">
-      <string notr="true">border: 1px solid white;
-border-radius:10%;
-color:white;</string>
+      <string notr="true"/>
      </property>
      <property name="text">
       <string>Back</string>
@@ -83,7 +81,7 @@ color:white;</string>
        </font>
       </property>
       <property name="styleSheet">
-       <string notr="true">color:white;</string>
+       <string notr="true"/>
       </property>
       <property name="text">
        <string>No phone connected</string>

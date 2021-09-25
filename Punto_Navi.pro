@@ -73,7 +73,9 @@ SOURCES += \
     ./gps_data.cpp \
     ./qserialgeoinfosource.cpp \
     gpsshowtime.cpp \
+    jukebox.cpp \
     messagebox.cpp \
+    radioinfo.cpp \
     timechanger.cpp
 
 
@@ -102,13 +104,16 @@ HEADERS += \
     ./gps_data.h \
     ./qserialgeoinfosource.h \
     gpsshowtime.h \
+    jukebox.h \
     messagebox.h \
+    radioinfo.h \
     timechanger.h
 
 
 FORMS += \
     aa_headunit.ui \
     gpsshowtime.ui \
+    jukebox.ui \
     mainwindow.ui \
     menu.ui \
     messagebox.ui \
@@ -127,4 +132,5 @@ DISTFILES += \
     ../raspi/sysroot/include/QtProtobufProtobuf/QtCore.proto \
     ../raspi/sysroot/include/QtProtobufProtobuf/QtGui.proto \
     config.json \
-    aa_settings.ini \
+    aa_settings.ini \ \
+    stylesheet/default.css

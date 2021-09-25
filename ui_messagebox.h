@@ -12,9 +12,9 @@
 #include <QtCore/QVariant>
 #include <QtWidgets/QApplication>
 #include <QtWidgets/QDialogButtonBox>
+#include <QtWidgets/QFrame>
 #include <QtWidgets/QGridLayout>
 #include <QtWidgets/QLabel>
-#include <QtWidgets/QSpacerItem>
 #include <QtWidgets/QWidget>
 
 QT_BEGIN_NAMESPACE
@@ -23,73 +23,70 @@ class Ui_MessageBox
 {
 public:
     QGridLayout *gridLayout;
-    QSpacerItem *horizontalSpacer;
-    QLabel *msg;
-    QSpacerItem *horizontalSpacer_2;
-    QDialogButtonBox *buttonBox;
+    QFrame *back;
+    QGridLayout *gridLayout_2;
     QLabel *label_2;
+    QLabel *msg;
+    QDialogButtonBox *ok;
 
     void setupUi(QWidget *MessageBox)
     {
         if (MessageBox->objectName().isEmpty())
             MessageBox->setObjectName(QString::fromUtf8("MessageBox"));
         MessageBox->resize(541, 393);
-        MessageBox->setStyleSheet(QString::fromUtf8("background-color:black;\n"
-"\n"
-"QLabel\n"
-"{\n"
-"	background:black;\n"
-"	color:white;\n"
-"}\n"
-"\n"
-"QPushButton\n"
-"{\n"
-"	background:black;\n"
-"	color:white;\n"
-"	border:2px solid white;\n"
-"}"));
         gridLayout = new QGridLayout(MessageBox);
         gridLayout->setObjectName(QString::fromUtf8("gridLayout"));
-        horizontalSpacer = new QSpacerItem(40, 20, QSizePolicy::Expanding, QSizePolicy::Minimum);
-
-        gridLayout->addItem(horizontalSpacer, 2, 0, 1, 1);
-
-        msg = new QLabel(MessageBox);
-        msg->setObjectName(QString::fromUtf8("msg"));
-        QSizePolicy sizePolicy(QSizePolicy::Preferred, QSizePolicy::Maximum);
+        back = new QFrame(MessageBox);
+        back->setObjectName(QString::fromUtf8("back"));
+        back->setStyleSheet(QString::fromUtf8("#back \n"
+"{\n"
+"background: rgb(40, 40, 40);\n"
+"border:2px solid white;\n"
+"\n"
+"}"));
+        back->setFrameShape(QFrame::StyledPanel);
+        back->setFrameShadow(QFrame::Raised);
+        gridLayout_2 = new QGridLayout(back);
+        gridLayout_2->setObjectName(QString::fromUtf8("gridLayout_2"));
+        label_2 = new QLabel(back);
+        label_2->setObjectName(QString::fromUtf8("label_2"));
+        QSizePolicy sizePolicy(QSizePolicy::Minimum, QSizePolicy::Minimum);
         sizePolicy.setHorizontalStretch(0);
         sizePolicy.setVerticalStretch(0);
-        sizePolicy.setHeightForWidth(msg->sizePolicy().hasHeightForWidth());
-        msg->setSizePolicy(sizePolicy);
+        sizePolicy.setHeightForWidth(label_2->sizePolicy().hasHeightForWidth());
+        label_2->setSizePolicy(sizePolicy);
+        label_2->setPixmap(QPixmap(QString::fromUtf8(":/img/warrn.png")));
+        label_2->setScaledContents(true);
+        label_2->setAlignment(Qt::AlignCenter);
+        label_2->setWordWrap(false);
+
+        gridLayout_2->addWidget(label_2, 0, 0, 1, 1);
+
+        msg = new QLabel(back);
+        msg->setObjectName(QString::fromUtf8("msg"));
+        QSizePolicy sizePolicy1(QSizePolicy::Preferred, QSizePolicy::Maximum);
+        sizePolicy1.setHorizontalStretch(0);
+        sizePolicy1.setVerticalStretch(0);
+        sizePolicy1.setHeightForWidth(msg->sizePolicy().hasHeightForWidth());
+        msg->setSizePolicy(sizePolicy1);
         QFont font;
         font.setPointSize(20);
         msg->setFont(font);
+        msg->setStyleSheet(QString::fromUtf8("background:white;\n"
+"color:black;"));
         msg->setAlignment(Qt::AlignCenter);
 
-        gridLayout->addWidget(msg, 3, 2, 1, 1);
+        gridLayout_2->addWidget(msg, 1, 0, 1, 1);
 
-        horizontalSpacer_2 = new QSpacerItem(40, 20, QSizePolicy::Expanding, QSizePolicy::Minimum);
+        ok = new QDialogButtonBox(back);
+        ok->setObjectName(QString::fromUtf8("ok"));
+        ok->setStandardButtons(QDialogButtonBox::Ok);
+        ok->setCenterButtons(true);
 
-        gridLayout->addItem(horizontalSpacer_2, 2, 3, 1, 1);
+        gridLayout_2->addWidget(ok, 3, 0, 1, 1);
 
-        buttonBox = new QDialogButtonBox(MessageBox);
-        buttonBox->setObjectName(QString::fromUtf8("buttonBox"));
-        buttonBox->setStandardButtons(QDialogButtonBox::Ok);
-        buttonBox->setCenterButtons(true);
 
-        gridLayout->addWidget(buttonBox, 4, 2, 1, 1);
-
-        label_2 = new QLabel(MessageBox);
-        label_2->setObjectName(QString::fromUtf8("label_2"));
-        QSizePolicy sizePolicy1(QSizePolicy::Maximum, QSizePolicy::Maximum);
-        sizePolicy1.setHorizontalStretch(0);
-        sizePolicy1.setVerticalStretch(0);
-        sizePolicy1.setHeightForWidth(label_2->sizePolicy().hasHeightForWidth());
-        label_2->setSizePolicy(sizePolicy1);
-        label_2->setPixmap(QPixmap(QString::fromUtf8(":/img/warrn.png")));
-        label_2->setScaledContents(true);
-
-        gridLayout->addWidget(label_2, 2, 2, 1, 1);
+        gridLayout->addWidget(back, 0, 0, 1, 1);
 
 
         retranslateUi(MessageBox);
@@ -100,8 +97,8 @@ public:
     void retranslateUi(QWidget *MessageBox)
     {
         MessageBox->setWindowTitle(QApplication::translate("MessageBox", "Dialog", nullptr));
-        msg->setText(QApplication::translate("MessageBox", "Something you shouldn't see", nullptr));
         label_2->setText(QString());
+        msg->setText(QApplication::translate("MessageBox", "Something you shouldn't see", nullptr));
     } // retranslateUi
 
 };

@@ -14,5 +14,7 @@
         <file>img/icons/settings.ico</file>
         <file>img/auto.png</file>
         <file>img/warrn.png</file>
+        <file>img/back1.jpg</file>
+        <file>stylesheet/default.css</file>
     </qresource>
 </RCC>

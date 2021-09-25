@@ -2,8 +2,10 @@
 #include "intro.h"
 #include "aa_headunit.h"
 #include "gpsshowtime.h"
+#include "jukebox.h"
 #include "mainwindow.h"
 #include "ui_mainwindow.h"
+
 
 
 
@@ -35,6 +37,17 @@ MainWindow::MainWindow(QWidget *parent)
    qDebug()<<"Window size: "<<screen_size->width()<<" "<<screen_size->height();
 
 
+   //create messageBox
+
+   msg=new MessageBox(this);
+
+   msg->setGeometry(0,0,2*this->size().width()/3,3*this->size().height()/4);
+
+   msg->move(this->size().width()/2-msg->size().width()/2,this->size().height()/2-msg->size().height()/2);
+
+   msg->show();
+
+
    allocate_widget(0);
 
 
@@ -42,13 +55,15 @@ MainWindow::MainWindow(QWidget *parent)
 
     s_rds=new QLocalSocket(this);
 
-    gps_info= QGeoPositionInfoSource::createDefaultSource(this);
 
 
+
+
+QObject::connect(fmrpi,&QProcess::errorOccurred,this,&MainWindow::fm_error);
 
 QObject::connect(fmrpi,&QProcess::errorOccurred,this,&MainWindow::fm_error);
 
-QObject::connect(fmrpi,&QProcess::errorOccurred,this,&MainWindow::fm_error);
+gps_info= QGeoPositionInfoSource::createDefaultSource(this);
 
 if(gps_info)
 {
@@ -69,11 +84,7 @@ else
 
 initializeSettings();
 
-msg=new MessageBox(this);
 
-msg->setGeometry(0,0,this->size().width()/2,this->size().height()/2);
-
-msg->show();
 
 }
 
@@ -109,6 +120,12 @@ void MainWindow::back_to_clock()
 MainWindow::~MainWindow()
 {
     delete ui;
+}
+
+void MainWindow::show_msg(QString _msg)
+{
+    msg->show_msg(_msg);
+    msg->show();
 }
 
 void MainWindow::keyPressEvent(QKeyEvent *event)
@@ -185,6 +202,15 @@ void MainWindow::allocate_widget(int w)
     case 4: //GPS debug
 
     n_widget=new GPSShowTime(this);
+
+    ui->centralwidget->layout()->addWidget(n_widget);
+
+
+    break;
+
+    case 5: //JukeBox
+
+    n_widget=new JukeBox(this);
 
     ui->centralwidget->layout()->addWidget(n_widget);
 
@@ -348,6 +374,8 @@ void MainWindow::start_fm()
 
     QStringList args;
 
+    if(_settings.value("fm/on").toBool())
+    {
 
 
     if(_settings.value("fm/rds").toBool())
@@ -358,7 +386,7 @@ void MainWindow::start_fm()
     args<<"--freq"<<_settings.value("fm/freq").toString()<<"-fS16_LE"<<"-r"<<"44100"<<"-Dplughw:1,0"<<"-c"<<"2"<<"-"<<"|"<<"./utils/pi_fm_adv"<<"--aduio"<<"-";
 
     fmrpi->start(FM_prog,args);
-
+    }
 
 }
 

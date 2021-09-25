@@ -47,9 +47,7 @@ public:
         sizePolicy.setVerticalStretch(0);
         sizePolicy.setHeightForWidth(pushButton->sizePolicy().hasHeightForWidth());
         pushButton->setSizePolicy(sizePolicy);
-        pushButton->setStyleSheet(QString::fromUtf8("border: 1px solid white;\n"
-"border-radius:10%;\n"
-"color:white;"));
+        pushButton->setStyleSheet(QString::fromUtf8(""));
 
         gridLayout->addWidget(pushButton, 0, 0, 1, 1);
 
@@ -73,7 +71,7 @@ public:
         font.setBold(true);
         font.setWeight(75);
         auto_msg->setFont(font);
-        auto_msg->setStyleSheet(QString::fromUtf8("color:white;"));
+        auto_msg->setStyleSheet(QString::fromUtf8(""));
         auto_msg->setAlignment(Qt::AlignCenter);
         auto_icon = new QLabel(server);
         auto_icon->setObjectName(QString::fromUtf8("auto_icon"));

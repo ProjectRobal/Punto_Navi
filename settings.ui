@@ -17,95 +17,33 @@
    <bool>false</bool>
   </property>
   <property name="styleSheet">
-   <string notr="true">#Settings
-{
-background-color:rgb(0, 0, 0);
-color:white;
-}
-
-QScrollArea
-{
-border: 1px solid white;
-background-color:rgb(0, 0, 0);
-color:white;
-}
-
-
-QPushButton , QCheckBox
-{
-border: 2px solid white;
-background-color:qlineargradient(spread:reflect, x1:1, y1:0.318, x2:1, y2:1, stop:0 rgba(0, 0, 0, 255), stop:1 rgba(255, 255, 255, 255));
-color:white;
-
-}
-
-QLabel
-{
-color:white;
-}
-
-QRadioButton
-{
-background:black;
-border: 2px solid white;
-color:white;
-}
-
-QRadioButton::indicator::unchecked
-{
-background:black;
-border:1px solid white;
-}
-
-QRadioButton::indicator::checked
-{
-background:white;
-border:1px solid white;
-}
-
-QCheckBox
-{
-background:black;
-border: 2px solid white;
-color:white;
-}
-
-QCheckBox::indicator::unchecked
-{
-background:black;
-border:1px solid white;
-}
-
-QCheckBox::indicator::checked
-{
-background:white;
-border:1px solid white;
-}
-
-QSlider::groove
-{
-	background:black;
-	border:2px solid white;
-	border-radius:4px;
-}
-
-QSlider::handle:horizontal
-{
-	background:rgb(68, 68, 68);
-	border:1px solid white;
-	width:15px;
-	height:15px;
-}
-
-QSlider::sub-page:horizontal
-{
-	background:white;
-	border:1px solid white;
-}</string>
+   <string notr="true"/>
   </property>
   <layout class="QGridLayout" name="gridLayout_2">
+   <item row="3" column="2">
+    <widget class="QPushButton" name="Exit">
+     <property name="sizePolicy">
+      <sizepolicy hsizetype="Minimum" vsizetype="Expanding">
+       <horstretch>0</horstretch>
+       <verstretch>0</verstretch>
+      </sizepolicy>
+     </property>
+     <property name="styleSheet">
+      <string notr="true"/>
+     </property>
+     <property name="text">
+      <string>Exit settings</string>
+     </property>
+    </widget>
+   </item>
    <item row="3" column="1">
     <widget class="QPushButton" name="Reset">
+     <property name="sizePolicy">
+      <sizepolicy hsizetype="Minimum" vsizetype="Expanding">
+       <horstretch>0</horstretch>
+       <verstretch>0</verstretch>
+      </sizepolicy>
+     </property>
      <property name="styleSheet">
       <string notr="true"/>
      </property>
@@ -116,28 +54,14 @@ QSlider::sub-page:horizontal
    </item>
    <item row="3" column="3">
     <widget class="QPushButton" name="back_menu">
+     <property name="sizePolicy">
+      <sizepolicy hsizetype="Minimum" vsizetype="Expanding">
+       <horstretch>0</horstretch>
+       <verstretch>0</verstretch>
+      </sizepolicy>
+     </property>
      <property name="text">
       <string>Back</string>
-     </property>
-    </widget>
-   </item>
-   <item row="3" column="2">
-    <widget class="QPushButton" name="Exit">
-     <property name="styleSheet">
-      <string notr="true"/>
-     </property>
-     <property name="text">
-      <string>Exit settings</string>
-     </property>
-    </widget>
-   </item>
-   <item row="3" column="0">
-    <widget class="QPushButton" name="Save">
-     <property name="styleSheet">
-      <string notr="true"/>
-     </property>
-     <property name="text">
-      <string>Save settings</string>
      </property>
     </widget>
    </item>
@@ -147,38 +71,68 @@ QSlider::sub-page:horizontal
       <layout class="QGridLayout" name="gridLayout">
        <item row="0" column="0">
         <widget class="QScrollArea" name="scrollArea">
+         <property name="frameShape">
+          <enum>QFrame::StyledPanel</enum>
+         </property>
+         <property name="frameShadow">
+          <enum>QFrame::Raised</enum>
+         </property>
+         <property name="lineWidth">
+          <number>1</number>
+         </property>
+         <property name="verticalScrollBarPolicy">
+          <enum>Qt::ScrollBarAlwaysOff</enum>
+         </property>
+         <property name="horizontalScrollBarPolicy">
+          <enum>Qt::ScrollBarAlwaysOff</enum>
+         </property>
+         <property name="sizeAdjustPolicy">
+          <enum>QAbstractScrollArea::AdjustIgnored</enum>
+         </property>
          <property name="widgetResizable">
-          <bool>true</bool>
+          <bool>false</bool>
+         </property>
+         <property name="alignment">
+          <set>Qt::AlignJustify|Qt::AlignVCenter</set>
          </property>
          <widget class="QWidget" name="scrollAreaWidgetContents">
           <property name="geometry">
            <rect>
             <x>0</x>
-            <y>0</y>
-            <width>823</width>
-            <height>511</height>
+            <y>4</y>
+            <width>3000</width>
+            <height>350</height>
            </rect>
           </property>
-          <layout class="QGridLayout" name="gridLayout_3">
+          <property name="sizePolicy">
+           <sizepolicy hsizetype="Minimum" vsizetype="Minimum">
+            <horstretch>0</horstretch>
+            <verstretch>0</verstretch>
+           </sizepolicy>
+          </property>
+          <layout class="QHBoxLayout" name="horizontalLayout">
+           <property name="spacing">
+            <number>10</number>
+           </property>
+           <property name="sizeConstraint">
+            <enum>QLayout::SetDefaultConstraint</enum>
+           </property>
            <property name="leftMargin">
-            <number>50</number>
+            <number>0</number>
            </property>
            <property name="topMargin">
-            <number>100</number>
+            <number>0</number>
            </property>
            <property name="rightMargin">
-            <number>50</number>
+            <number>0</number>
            </property>
            <property name="bottomMargin">
-            <number>200</number>
+            <number>0</number>
            </property>
-           <property name="spacing">
-            <number>50</number>
-           </property>
-           <item row="0" column="2">
-            <widget class="QPushButton" name="connect">
+           <item>
+            <widget class="QPushButton" name="time">
              <property name="sizePolicy">
-              <sizepolicy hsizetype="Maximum" vsizetype="Fixed">
+              <sizepolicy hsizetype="Expanding" vsizetype="Minimum">
                <horstretch>0</horstretch>
                <verstretch>0</verstretch>
               </sizepolicy>
@@ -189,26 +143,32 @@ QSlider::sub-page:horizontal
               </font>
              </property>
              <property name="text">
-              <string>Connectivity</string>
+              <string>Time</string>
              </property>
             </widget>
            </item>
-           <item row="2" column="0">
-            <widget class="QPushButton" name="time">
+           <item>
+            <widget class="QPushButton" name="other">
+             <property name="sizePolicy">
+              <sizepolicy hsizetype="Expanding" vsizetype="Minimum">
+               <horstretch>0</horstretch>
+               <verstretch>0</verstretch>
+              </sizepolicy>
+             </property>
              <property name="font">
               <font>
                <pointsize>20</pointsize>
               </font>
              </property>
              <property name="text">
-              <string>Time</string>
+              <string>Other</string>
              </property>
             </widget>
            </item>
-           <item row="1" column="2">
+           <item>
             <widget class="QPushButton" name="gps">
              <property name="sizePolicy">
-              <sizepolicy hsizetype="Maximum" vsizetype="Fixed">
+              <sizepolicy hsizetype="Expanding" vsizetype="Minimum">
                <horstretch>0</horstretch>
                <verstretch>0</verstretch>
               </sizepolicy>
@@ -223,22 +183,10 @@ QSlider::sub-page:horizontal
              </property>
             </widget>
            </item>
-           <item row="2" column="2">
-            <widget class="QPushButton" name="other">
-             <property name="font">
-              <font>
-               <pointsize>20</pointsize>
-              </font>
-             </property>
-             <property name="text">
-              <string>Other</string>
-             </property>
-            </widget>
-           </item>
-           <item row="1" column="0">
+           <item>
             <widget class="QPushButton" name="audio">
              <property name="sizePolicy">
-              <sizepolicy hsizetype="Maximum" vsizetype="Fixed">
+              <sizepolicy hsizetype="Expanding" vsizetype="Minimum">
                <horstretch>0</horstretch>
                <verstretch>0</verstretch>
               </sizepolicy>
@@ -256,10 +204,28 @@ QSlider::sub-page:horizontal
              </property>
             </widget>
            </item>
-           <item row="0" column="0">
+           <item>
+            <widget class="QPushButton" name="connect">
+             <property name="sizePolicy">
+              <sizepolicy hsizetype="Expanding" vsizetype="Minimum">
+               <horstretch>0</horstretch>
+               <verstretch>0</verstretch>
+              </sizepolicy>
+             </property>
+             <property name="font">
+              <font>
+               <pointsize>20</pointsize>
+              </font>
+             </property>
+             <property name="text">
+              <string>Connectivity</string>
+             </property>
+            </widget>
+           </item>
+           <item>
             <widget class="QPushButton" name="FM">
              <property name="sizePolicy">
-              <sizepolicy hsizetype="Maximum" vsizetype="Fixed">
+              <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
                <horstretch>0</horstretch>
                <verstretch>0</verstretch>
               </sizepolicy>
@@ -386,6 +352,22 @@ QSlider::sub-page:horizontal
        </item>
       </layout>
      </widget>
+    </widget>
+   </item>
+   <item row="3" column="0">
+    <widget class="QPushButton" name="Save">
+     <property name="sizePolicy">
+      <sizepolicy hsizetype="Minimum" vsizetype="Expanding">
+       <horstretch>0</horstretch>
+       <verstretch>0</verstretch>
+      </sizepolicy>
+     </property>
+     <property name="styleSheet">
+      <string notr="true"/>
+     </property>
+     <property name="text">
+      <string>Save settings</string>
+     </property>
     </widget>
    </item>
   </layout>

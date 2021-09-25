@@ -42,6 +42,8 @@ public:
 
 signals:
 
+    void return_to_menu();
+
 public slots:
     //void eventMessage(QString id, QVariant message);
 
@@ -58,6 +60,8 @@ public slots:
     void waitAA();
 
     void load_aim();
+
+    void failure();
 
 private:
     Headunit* headunit;

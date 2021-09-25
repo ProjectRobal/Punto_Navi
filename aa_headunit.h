@@ -21,6 +21,8 @@ public:
 private slots:
     void on_pushButton_clicked();
 
+    void connection_failure();
+
 private:
     Ui::AA_Headunit *ui;
 
